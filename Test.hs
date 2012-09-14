@@ -5,7 +5,7 @@ import Modules
 import ModSysSem
 
 import Set
-import Monad(zipWithM_)
+import Control.Monad(zipWithM_)
 
 entF x  = mkEnt x "f" emptySet 
 

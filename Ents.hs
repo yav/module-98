@@ -1,7 +1,7 @@
 module Ents(Entity,owns,isCon,mkEnt {- for testing -}) where
 
 import Set
-import Char
+import Data.Char
 
 
 -- interface of the module system to the concrete type of entities
