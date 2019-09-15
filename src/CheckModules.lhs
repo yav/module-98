@@ -88,10 +88,13 @@ checks, since they might produce bogus error messages.
 >                        err <- chkImport exps imp]
 >        else map MissingModule missingModules
 >   where
+>   mod_exports :: Rel Name Entity
 >   Just mod_exports = expsOf (modName mod)
 >
+>   missingModules :: [ModName]
 >   missingModules =
 >     nub [impSource imp|(imp,Nothing)<-impSources]
+>   impSources :: [(Import, Maybe (Rel Name Entity))]
 >   impSources =
 >     [(imp,expsOf (impSource imp))|imp<-modImports mod]
 
@@ -116,10 +119,12 @@ which one is meant.
 > chkAmbigExps exps = concatMap isAmbig 
 >                              (setToList (dom exps))
 >   where
+>   isAmbig :: Name -> [ModSysErr]
 >   isAmbig n = 
 >     let (cons,other) = partition isCon (applyRel exps n) 
 >     in ambig n cons ++ ambig n other 
 >
+>   ambig :: Name -> [Entity] -> [ModSysErr]
 >   ambig n ents@(_:_:_)    = [AmbiguousExport n ents]
 >   ambig n _               = []
  
@@ -156,8 +161,10 @@ or the symbol table of the current module.
 >     []   -> [errUndef x]
 >     ents -> concatMap chk ents
 >   where
+>   xents :: [Entity]
 >   xents = filter consider (applyRel rel x)
 >
+>   chk :: Entity -> [ModSysErr]
 >   chk ent = 
 >     case subspec of
 >       Just (Subs subs) -> 
@@ -170,6 +177,7 @@ or the symbol table of the current module.
 >             $ restrictRng (`elementOf` owns ent) rel
 >       _ -> []
 >
+>   consider :: Entity -> Bool
 >   consider
 >     | isHiding && isNothing subspec = const True
 >     | otherwise                     = not . isCon
@@ -200,8 +208,10 @@ they refer to are defined by using the generic #chkEntSpec#.
 >       Nothing   -> []
 >       Just exps -> concatMap chk exps
 >   where
+>   aliases :: [ModName]
 >   aliases = modName mod : impAs `map` modImports mod
 >
+>   chk :: ExpListEntry -> [ModSysErr]
 >   chk (ModuleExp x)
 >     | x `elem` aliases = []
 >     | otherwise        = [UndefinedModuleAlias x]
@@ -218,7 +228,9 @@ in the specification list of the import.
 > chkImport :: Rel Name Entity -> Import -> [ModSysErr]
 > chkImport exps imp = concatMap chk (impList imp)
 >   where
+>   src     :: ModName
 >   src      = impSource imp
+>   chk     :: EntSpec Name -> [ModSysErr]
 >   chk spec = 
 >     chkEntSpec (impHiding imp)
 >       (UndefinedImport src) (UndefinedSubImport src)
