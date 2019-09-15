@@ -1,0 +1,36 @@
+cabal-version:       2.4
+name:                module98
+version:             0.1.0.0
+synopsis:            Experiments
+homepage:            https://github.com/yav/module-98
+license:             MIT
+category:            System
+author:              Iavor S. Diatchki
+extra-source-files:  README
+
+library
+  exposed-modules:
+                     CheckModules
+                     Ents
+                     ModSysAST
+                     ModSysSem
+                     Modules
+                     Names
+                     NamesEntities
+                     Relations
+                     Set
+
+  build-depends:     base
+                   , containers
+
+  hs-source-dirs:    src
+  default-language:  Haskell98
+
+test-suite test
+  main-is:           Test.hs
+  default-language:  Haskell98
+  type:              exitcode-stdio-1.0
+
+  build-depends:     base
+                   , containers
+                   , module98
