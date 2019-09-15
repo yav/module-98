@@ -4,7 +4,7 @@
 > import CheckModules
 > import ModSysAST
 > import NamesEntities
-> import Relations(Rel,emptyRel)
+> import Util.Relations(Rel,emptyRel)
 
 The semantics of a Haskell program
 ==================================

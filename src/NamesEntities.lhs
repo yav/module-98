@@ -12,11 +12,11 @@ specification with a discussion about names and entities.
 >   module Names
 > ) where
 >
-> import Set
 > import Data.Maybe(isJust)
 > import Ents(Entity,isCon,owns)
 > import Names(Name,QName,ModName,
 >              getQualified, getQualifier, mkQual, mkUnqual)
+> import Util.Set
 
 
 

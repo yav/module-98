@@ -17,8 +17,8 @@ library
                      Modules
                      Names
                      NamesEntities
-                     Relations
-                     Set
+                     Util.Relations
+                     Util.Set
 
   build-depends:     base
                    , containers

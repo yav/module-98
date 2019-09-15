@@ -3,8 +3,8 @@ import Ents(mkEnt)
 import ModSysAST
 import Modules
 import ModSysSem
+import Util.Set
 
-import Set
 import Control.Monad(zipWithM_)
 import System.Exit (exitFailure)
 

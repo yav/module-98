@@ -1,4 +1,4 @@
-module Set where
+module Util.Set where
 
 import qualified Data.Set as S
 
