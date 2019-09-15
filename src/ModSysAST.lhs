@@ -1,7 +1,7 @@
 > module ModSysAST where
 >
 > import NamesEntities
-> import Relations
+> import Util.Relations
 
 Abstract Syntax
 ===============

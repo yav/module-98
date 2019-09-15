@@ -1,6 +1,6 @@
-> module Relations where
+> module Util.Relations where
 >
-> import Set
+> import Util.Set
 
 Relations
 =========

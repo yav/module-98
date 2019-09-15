@@ -10,13 +10,13 @@ and how we can detect ``bad'' solutions.
 
 > module CheckModules(ModSysErr(..),chkModule) where
 >
-> import Relations
 > import NamesEntities
 > import ModSysAST
 > import Modules
 > import Data.List (partition,nub)
 > import Data.Maybe(isNothing)
-> import Set
+> import Util.Relations
+> import Util.Set
 
 Even though this specification aims for clarity rather than efficiency
 or usability, we believe that it is important not only to detect

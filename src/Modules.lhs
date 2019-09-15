@@ -1,10 +1,10 @@
 > module Modules(computeInsOuts,inscope) where
 >
-> import Relations
 > import NamesEntities
 > import ModSysAST
 > import Data.Maybe (isNothing)
-> import Set
+> import Util.Relations
+> import Util.Set
 
 The semantics of imports and exports
 ====================================

@@ -3,9 +3,10 @@ import Ents(mkEnt)
 import ModSysAST
 import Modules
 import ModSysSem
+import Util.Set
 
-import Set
 import Control.Monad(zipWithM_)
+import System.Exit (exitFailure)
 
 entF x  = mkEnt x "f" emptySet 
 
@@ -147,7 +148,7 @@ test mods = either (zipWithM_ printErr mods)
   printErr m es
     | null es = return ()
     | otherwise = putStrLn ("Error(s) in module " ++ show (modName m) ++ ": " 
-                  ++ show es)
+                  ++ show es) >> exitFailure
   printRels m (ins,outs) = 
     do putStrLn ("in scope of module " ++ show (modName m) ++ ":")
        printRel ins
