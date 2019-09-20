@@ -1,12 +1,13 @@
-import Names
-import Ents(mkEnt)
-import ModSysAST
-import Modules
-import ModSysSem
-import Util.Set
-
 import Control.Monad(zipWithM_)
 import System.Exit (exitFailure)
+
+import Types.Ents(mkEnt)
+import Types.Names
+import Types.ModSysAST
+import Util.Set
+
+import ModSysSem
+import Modules
 
 entF x  = mkEnt x "f" emptySet 
 

@@ -1,10 +1,11 @@
 > module ModSysSem(mProgram) where
 >
+> import Types.ModSysAST
+> import Util.NamesEntities
+> import Util.Relations(Rel,emptyRel)
+>
 > import Modules
 > import CheckModules
-> import ModSysAST
-> import NamesEntities
-> import Util.Relations(Rel,emptyRel)
 
 The semantics of a Haskell program
 ==================================

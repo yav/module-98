@@ -1,4 +1,4 @@
-module Ents(Entity,owns,isCon,mkEnt {- for testing -}) where
+module Types.Ents(Entity,owns,isCon,mkEnt {- for testing -}) where
 
 import Data.Char
 import Util.Set

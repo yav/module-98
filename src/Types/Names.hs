@@ -1,4 +1,4 @@
-module Names 
+module Types.Names 
   (Name(..), QName, ModName(..)
   , getQualifier, getQualified
   , mkUnqual, mkQual

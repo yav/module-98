@@ -6,16 +6,17 @@ Having described the Haskell module system as a mechanism for
 name space management, it is natural for us to begin its
 specification with a discussion about names and entities.
 
-> module NamesEntities (
->   module NamesEntities,
->   module Ents,
->   module Names
+> module Util.NamesEntities (
+>   module Util.NamesEntities,
+>   module Types.Ents,
+>   module Types.Names
 > ) where
 >
 > import Data.Maybe(isJust)
-> import Ents(Entity,isCon,owns)
-> import Names(Name,QName,ModName,
->              getQualified, getQualifier, mkQual, mkUnqual)
+>
+> import Types.Ents(Entity,isCon,owns)
+> import Types.Names(Name,QName,ModName,
+>                    getQualified, getQualifier, mkQual, mkUnqual)
 > import Util.Set
 
 

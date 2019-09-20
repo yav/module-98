@@ -1,11 +1,14 @@
 > {-# LANGUAGE ScopedTypeVariables #-}
 > module Modules(computeInsOuts,inscope) where
 >
-> import NamesEntities
-> import ModSysAST
 > import Data.Maybe (isNothing)
+>
+> import Types.ModSysAST
+> import Types.Names
+> import Util.NamesEntities
 > import Util.Relations
 > import Util.Set
+>
 
 The semantics of imports and exports
 ====================================
