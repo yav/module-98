@@ -1,10 +1,11 @@
 > module ModSysSem(mProgram) where
 >
+> import Types.ModSysAST
+> import Util.NamesEntities
+> import Util.Relations(Rel,emptyRel)
+>
 > import Modules
 > import CheckModules
-> import ModSysAST
-> import NamesEntities
-> import Util.Relations(Rel,emptyRel)
 
 The semantics of a Haskell program
 ==================================
@@ -34,11 +35,18 @@ we define the function #mProgram# as follows:
 >   | not (all null errs) = Left errs
 >   | otherwise       = Right rels
 >   where
+>   rels :: [(Rel QName Entity, Rel Name Entity)]
 >   rels = computeInsOuts (const emptyRel) modules
+>
+>   errs :: [[ModSysErr]]
 >   errs = zipWith (chkModule expsOf) inscps modules
 >
->   (inscps,exps) = unzip rels
+>   ie :: ([Rel QName Entity], [Rel Name Entity])
+>   ie@(inscps,exps) = unzip rels
+>
+>   expsOf       :: ModName -> Maybe (Rel Name Entity)
 >   expsOf m      = lookup m mod_exps
+>   mod_exps     :: [(ModName, Rel Name Entity)]
 >   mod_exps      = map modName modules `zip` exps
 
 
@@ -52,7 +60,7 @@ Haskell program, it would probably not be very practical in a Haskell
 implementation, since it does not support separate compilation. Instead of
  #mProgram#, we have implemented a more sophisticated function based on the
 same key ingredients: the functions #computeInsOuts# (which supports
-separate compilation) and #chkModule#, described in sections \ref{rec-mods} 
+separate compilation) and #chkModule#, described in sections \ref{rec-mods}
 and \ref{Err} respectively.
 Our Haskell front-end processes modules one
 strongly connected component at a time, caches module interfaces

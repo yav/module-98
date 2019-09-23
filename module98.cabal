@@ -11,12 +11,12 @@ extra-source-files:  README
 library
   exposed-modules:
                      CheckModules
-                     Ents
-                     ModSysAST
                      ModSysSem
                      Modules
-                     Names
-                     NamesEntities
+                     Types.Ents
+                     Types.ModSysAST
+                     Types.Names
+                     Util.NamesEntities
                      Util.Relations
                      Util.Set
 

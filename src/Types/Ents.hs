@@ -1,4 +1,4 @@
-module Ents(Entity,owns,isCon,mkEnt {- for testing -}) where
+module Types.Ents(Entity,owns,isCon,mkEnt {- for testing -}) where
 
 import Data.Char
 import Util.Set
@@ -6,7 +6,7 @@ import Util.Set
 
 -- interface of the module system to the concrete type of entities
 
-data Entity = Entity 
+data Entity = Entity
   { definedIn :: String
   , name      :: String
   , owns      :: Set Entity
@@ -31,5 +31,3 @@ mkEnt a b c = Entity { definedIn = a, name = b, owns = c}
 
 
 toPair ent = (name ent, definedIn ent)
- 
-
