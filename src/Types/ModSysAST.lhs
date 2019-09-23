@@ -27,16 +27,16 @@ represented in its expanded form.
 
 An element of the export specification is
 either an entity name or a module name as described by the
-data structure #ExpListEntry#.  For entities with subordinate names, 
-a programmer may also provide a _subordinate export list_.  
-This list is modeled by the data structure #SubSpec#.  
-It specifies which of the subordinate entities currently in scope 
+data structure #ExpListEntry#.  For entities with subordinate names,
+a programmer may also provide a _subordinate export list_.
+This list is modeled by the data structure #SubSpec#.
+It specifies which of the subordinate entities currently in scope
 are to be exported.
 
-> data ExpListEntry = EntExp (EntSpec QName) 
+> data ExpListEntry = EntExp (EntSpec QName)
 >                   | ModuleExp ModName
 > data EntSpec j    = Ent j (Maybe SubSpec)
-> data SubSpec      = AllSubs | Subs [Name] 
+> data SubSpec      = AllSubs | Subs [Name]
 
 \begin{ex}
 For the Haskell module:
@@ -52,7 +52,7 @@ the field #modExpList# would be:
 
 The structure #EntSpec# is used in both import and export lists.
 Because qualified names are allowed in export lists,
-but not in import lists, we use the parameter #j# to capture the different 
+but not in import lists, we use the parameter #j# to capture the different
 types of #EntSpec#.
 
 At first it may seem that we may eliminate #AllSubs# by thinking
@@ -61,12 +61,12 @@ of its owner.  This however is not the case, as its meaning depends
 on what entities are currently in scope, and this is one of the things
 the module system computes.
 
-The lack of an export list is a special form of export specification: 
-one saying that only---and all---locally defined entities are to be exported 
-\cite[Section 5.2]{Haskell98}.  It is _not_ an abbreviation for the 
-empty export list, or the export list containing only #module M# 
-(where #M# is the current module).  We represent this explicitly by 
-using the #Maybe# type constructor in the #modExpList# field. 
+The lack of an export list is a special form of export specification:
+one saying that only---and all---locally defined entities are to be exported
+\cite[Section 5.2]{Haskell98}.  It is _not_ an abbreviation for the
+empty export list, or the export list containing only #module M#
+(where #M# is the current module).  We represent this explicitly by
+using the #Maybe# type constructor in the #modExpList# field.
 
 To make use of entities defined in other modules, programmers have
 to supply _import declarations_.  Their purpose it to specify
@@ -88,7 +88,7 @@ a default value, if not specified explicitly.
 There are two flavors of import declarations:
 the ones specifying what names are to be imported, and the ones specifying
 what names are _not_ to be imported (sometimes called ``hiding'' imports).
-The boolean field #impHiding# distinguishes between those two.   
+The boolean field #impHiding# distinguishes between those two.
 
 The field #impList# contains the actual specification, which has
 structure similar to the export list of a module.  There are two
@@ -99,9 +99,9 @@ assumed to be #[]#, and the #impHiding# field is set to #True#.
 This has the effect of importing all exported entities of the source module.
 
 Sometimes it is more convenient to qualify names imported from a
-module not using the module name, but some other alias instead.  This is 
+module not using the module name, but some other alias instead.  This is
 particularly useful if the name of the source module is quite long and
-a programmer needs to refer often to imported entities by their 
+a programmer needs to refer often to imported entities by their
 qualified names.  The field #impAs# stores this alias.  If the alias
 is omitted, this field is assumed to have the same value as the
  #impFrom# fields (i.e. we use the module name in qualified names).

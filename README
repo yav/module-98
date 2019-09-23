@@ -1,5 +1,5 @@
 This is the source code for the Haskell 98 module system as
-described in the paper: 
+described in the paper:
 "A Formal Specification of the Haskell 98 Module System"
 by Iavor S. Diatchki, Mark P. Jones, Thomas Hallgren
 published in the Haskell workshop 2002
@@ -8,7 +8,7 @@ published in the Haskell workshop 2002
 Files
 =====
 
-README            - this file 
+README            - this file
 ModSysSem.lhs     - putting it all together
 ModSysAST.lhs     - the abstract syntax for the module ssytem
 Modules.lhs       - this is where all the important work is done
@@ -23,6 +23,3 @@ Test.hs           - a driver with some examples
 Set.hs            - An implementation of sets in terms of Data.Set
 (In GHC 6.4 the interface to the library implementing sets changed.
  This module implements the old interface in terms of the new one.)
-
-
-  

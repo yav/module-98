@@ -60,7 +60,7 @@ Haskell program, it would probably not be very practical in a Haskell
 implementation, since it does not support separate compilation. Instead of
  #mProgram#, we have implemented a more sophisticated function based on the
 same key ingredients: the functions #computeInsOuts# (which supports
-separate compilation) and #chkModule#, described in sections \ref{rec-mods} 
+separate compilation) and #chkModule#, described in sections \ref{rec-mods}
 and \ref{Err} respectively.
 Our Haskell front-end processes modules one
 strongly connected component at a time, caches module interfaces

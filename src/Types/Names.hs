@@ -1,11 +1,11 @@
-module Types.Names 
+module Types.Names
   (Name(..), QName, ModName(..)
   , getQualifier, getQualified
   , mkUnqual, mkQual
   ) where
 
 
--- Interface of the module system, to the concrete type of names 
+-- Interface of the module system, to the concrete type of names
 
 newtype Name    = Name String                     deriving (Eq,Ord)
 newtype ModName = ModName String                  deriving (Eq,Ord)

@@ -12,7 +12,3 @@ intersect s t       = S.intersection s t
 unionManySets xs    = S.unions xs
 minusSet s t        = S.difference s t
 elementOf s t       = S.member s t
-
-
-
-
